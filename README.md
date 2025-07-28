@@ -25,7 +25,7 @@ This started as an excuse to explore Julia a bit more seriously. I'm not working
 
 Chart output:
 
-![Benchmark Chart](plots/runtime_comparison.png)
+![Benchmark Chart](./plots/runtime_comparison.png)
 
 ## Takeaways
 
