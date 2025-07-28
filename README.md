@@ -12,7 +12,6 @@ This started as an excuse to explore Julia a bit more seriously. I'm not working
 
 - **Julia version:** 1.11  
 - **Python version:** 3.11 + NumPy  
-- **Machine:** [Insert CPU info here if desired]  
 - **Simulation sizes:** 1M, 5M, 10M iterations
 
 ## Results
