@@ -1,0 +1,43 @@
+# Julia artifacts
+Manifest.toml
+.julia/
+*.jl.cov
+*.jl.*.cov
+*.ji
+*.o
+*.so
+*.dylib
+*.dll
+
+# VSCode / JetBrains / other editors
+.vscode/
+.idea/
+*.swp
+
+# Python venv and artifacts
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# Plots and outputs
+plots/*.png
+plots/*.svg
+*.pdf
+
+# Benchmark logs or scratch
+benchmarks/*.csv
+benchmarks/*.json
+benchmarks/*.md~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project backup/temp
+*~
+*.bak
+*.tmp

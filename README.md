@@ -1,55 +1,68 @@
-# Monte Carlo Simulation Benchmark: Julia vs Python
+# Monte Carlo Benchmark: Julia vs Python
 
-This project is a minimal **proof-of-concept (PoC)** comparing Julia and Python performance on a computationally intensive task: **option pricing using Monte Carlo simulations**.
+This repo contains a small benchmarking experiment comparing **Julia and Python** for a CPU-bound numerical task. The focus isn't on the accuracy of the simulation itself — it’s on how each language performs under a straightforward, repeatable workload.
 
----
+The simulation estimates the price of a European call option using a **Monte Carlo method** under the Black-Scholes model. It’s a classic benchmark scenario: compute-heavy, easy to scale, and easy to implement in both languages.
 
-## Project Goals
+## Purpose
 
-- Show how Julia excels in high-performance numerical computing
-- Compare with equivalent NumPy-based Python implementation
-- Highlight clear speedups and clean syntax
-- Share reproducible benchmarks and plots
+This started as an excuse to explore Julia a bit more seriously. I'm not working on anything involving option pricing or Monte Carlo simulations in my day job — I just wanted a simple way to stress-test performance with minimal boilerplate.
 
----
+## Setup
 
-## Problem: Option Pricing via Monte Carlo
+- **Julia version:** 1.11  
+- **Python version:** 3.11 + NumPy  
+- **Machine:** [Insert CPU info here if desired]  
+- **Simulation sizes:** 1M, 5M, 10M iterations
 
-We estimate the value of a European call option using the Black-Scholes model and simulate `N` paths of the terminal asset price.
+## Results
 
-### Equation:
+| Simulations | Python Time (s) | Julia Time (s) | Speedup |
+|-------------|------------------|----------------|---------|
+| 1 million   | 0.029            | 0.010          | ~2.9x   |
+| 5 million   | 0.105            | 0.092          | ~1.14x  |
+| 10 million  | 0.196            | 0.117          | ~1.67x  |
 
-\[
-S_T = S_0 \cdot e^{(r - \frac{1}{2} \sigma^2) T + \sigma \sqrt{T} Z}
-\]
+Chart output:
 
-where \( Z \sim \mathcal{N}(0,1) \)
+![Benchmark Chart](plots/runtime_comparison.png)
 
----
+## Takeaways
 
-## Results Summary
+Julia was consistently faster than Python for this workload — nearly 3x faster at the lower end, and still ahead at larger scales. These aren’t scientific measurements and they weren’t intended to be, but they do line up with the general performance reputation Julia has earned.
 
-| Simulations | Python (NumPy) | Julia |
-|-------------|----------------|--------|
-| 1 million   | 0.55s          | 0.07s |
-| 10 million  | 5.8s           | 0.72s |
-| 100 million | 59.3s          | 6.9s  |
+Most of the benchmarking logic was simple to write. Most of the effort went into getting the plotting to behave.
 
-> With multithreading, Julia scales further linearly. Python (NumPy) hits a ceiling due to GIL.
+## How to Run
 
-See full results in [`benchmarks/results.md`](./benchmarks/results.md)
+### Julia
 
----
+```
+julia --project scripts/run_simulation.jl
+```
 
-## Run It Yourself
+### Python
 
-### Prerequisites
-- Julia ≥ 1.10
-- Python ≥ 3.10 with NumPy
+```
+python -m venv venv
+source venv/bin/activate      # Or .\venv\Scripts\activate on Windows
+pip install numpy
+python scripts/run_python_benchmark.py
+```
 
-### Julia Setup
-```bash
-julia --project -e 'using Pkg; Pkg.instantiate()'
-julia scripts/run_simulation.jl
+## What's in the Repo
 
+```
+montecarlo-julia-poc/
+├── src/                    # MonteCarlo.jl simulation logic
+├── scripts/                # Runners for both Julia and Python
+├── plots/                  # Output PNG of the comparison chart
+├── benchmarks/             # Placeholder for future output
+├── Project.toml            # Julia environment
+├── README.md
+└── .gitignore
+```
 
+## License
+
+MIT — feel free to use or extend.
