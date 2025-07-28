@@ -23,11 +23,6 @@ __pycache__/
 *.egg-info/
 *.egg
 
-# Plots and outputs
-plots/*.png
-plots/*.svg
-*.pdf
-
 # Benchmark logs or scratch
 benchmarks/*.csv
 benchmarks/*.json
