@@ -1,12 +1,12 @@
 # Monte Carlo Benchmark: Julia vs Python
 
-This repo contains a small benchmarking experiment comparing **Julia and Python** for a CPU-bound numerical task. The focus isn't on the accuracy of the simulation itself — it’s on how each language performs under a straightforward, repeatable workload.
+This repo contains a small benchmarking experiment comparing **Julia and Python** for a CPU-bound numerical task. The focus isn't on the accuracy of the simulation itself - it’s on how each language performs under a straightforward, repeatable workload.
 
 The simulation estimates the price of a European call option using a **Monte Carlo method** under the Black-Scholes model. It’s a classic benchmark scenario: compute-heavy, easy to scale, and easy to implement in both languages.
 
 ## Purpose
 
-This started as an excuse to explore Julia a bit more seriously. I'm not working on anything involving option pricing or Monte Carlo simulations in my day job — I just wanted a simple way to stress-test performance with minimal boilerplate.
+This started as an excuse to explore Julia a bit more seriously. I'm not working on anything involving option pricing or Monte Carlo simulations in my day job - I just wanted a simple way to stress-test performance with minimal boilerplate.
 
 ## Setup
 
@@ -28,7 +28,7 @@ Chart output:
 
 ## Takeaways
 
-Julia was consistently faster than Python for this workload — nearly 3x faster at the lower end, and still ahead at larger scales. These aren’t scientific measurements and they weren’t intended to be, but they do line up with the general performance reputation Julia has earned.
+Julia was consistently faster than Python for this workload - nearly 3x faster at the lower end, and still ahead at larger scales. These aren’t scientific measurements and they weren’t intended to be, but they do line up with the general performance reputation Julia has earned.
 
 Most of the benchmarking logic was simple to write. Most of the effort went into getting the plotting to behave.
 
@@ -64,4 +64,4 @@ montecarlo-julia-poc/
 
 ## License
 
-MIT — feel free to use or extend.
+MIT - feel free to use or extend.
